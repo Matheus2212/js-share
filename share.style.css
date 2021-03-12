@@ -1,0 +1,118 @@
+.shareWrapperElement {
+  position: relative;
+  padding: 3px;
+  display: inline-block;
+
+  -webkit-transition: ease-in-out 0.4s;
+  -moz-transition: ease-in-out 0.4s;
+  -o-transition: ease-in-out 0.4s;
+  -ms-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+.shareWrapperElement .shareWrapperButtons {
+  overflow: hidden;
+  position: relative;
+}
+
+.shareWrapperElement .shareWrapperButtons .shareButton,
+.shareWrapperElement .shareWrapperButtons .shareButton:active,
+.shareWrapperElement .shareWrapperButtons .shareButton:link,
+.shareWrapperElement .shareWrapperButtons .shareButton:visited {
+  color: #ffffff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px 15px 5px 30px;
+  background-size: 18px;
+  background-position: 8px 50%;
+  background-repeat: no-repeat;
+  text-decoration: none;
+  margin-right: 5px;
+  position: relative;
+
+  -webkit-transition: ease-in-out 0.2s;
+  -moz-transition: ease-in-out 0.2s;
+  -o-transition: ease-in-out 0.2s;
+  -ms-transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.2s;
+
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px;
+}
+.shareWrapperElement .shareWrapperButtons .shareButton:hover {
+  opacity: 0.7;
+}
+.shareWrapperElement.shareButtonNoText .shareWrapperButtons .shareButton,
+.shareWrapperElement.shareButtonNoText .shareWrapperButtons .shareButton:active,
+.shareWrapperElement.shareButtonNoText .shareWrapperButtons .shareButton:link,
+.shareWrapperElement.shareButtonNoText
+  .shareWrapperButtons
+  .shareButton:visited,
+.shareWrapperElement.shareButtonNoText .shareWrapperButtons .shareButton:hover {
+  background-position: 50% 50%;
+  min-height: 20px;
+  min-width: 20px;
+  padding: 5px;
+}
+.shareWrapperElement .shareButtonTrigger {
+  color: #666666;
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px 15px 5px 30px;
+  background-size: 18px;
+  background-position: 8px 50%;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAFUUlEQVR4nO2caYhWZRTHfy4ttjqaZguR7eSYRYvZAhW0GQXtQRbROkbbh76UIC1Q+kGkCCmKJijsy1QakUUbOhXZiJNWRlNDNpk1LVJqNpq+bzx4Lt7uc567vXfiPu/cP/y/nHvOfZ9zuM+595znzFChQoUKFf5/DGuSmI8HWoEjgLHAn8Ba4HPgR0t7iOBWoAPoAQaAOrBdAvM6cB+w51AKyEzgGwlEEvuBWdYdmhAdCYFwsRMY3axB6XQ4nZa9wBjrrp5jcYNBCbi6mYJyi+JglOYt9C6wEtihXA/zcesXPMXvinMBXwCOjLh1MDBf0Q2zxfegzFCcCthmaf8X0xWbgN4/NW8pThkusjR1PKrYGnYDk1QLT/CD4pTJIQdkWP4fyj22yweiheGWpHwweWCCsirzZvnNkrqxVLkyAjjcknoSmH2BkZYU1lmSeKx3XN3LkngSmI3ANksK4yxJPFzbbsCSeITvlfywNWNx2K/cw/BOS9MDTAZeC1XNUT6T0oWZiq3hGuAUS7vEMK/QlxVHNE5PcOMExSbgAku7pJgCvKI4kMSHgFERl0wT7l6gFmN7mCsMjXTwjgYuBI4D9pbH/TtgidQsWXA88AhwZQPr2QB8AvwkXbxTgUMsrV1oB262pA3gfmCVEv0wTTftYWD3hJ8x+3uhYj/Y/Nn1ms6Dc4AvMy54neMpOB14SdGPY5fURStjdNJwkzztheDaBhdzjyxiSo6AdEvLIYDpwH2s6KWh2erHFBWUiwp6rJcosjiaT/47rNXsgqmMN8fYR/kssId1l5w4SPmBweYXwE0pl9siSXsF8FdkXdskFz4hxyqFYlFCEBZKdXoGcD3wHPC3opeGa1yVbkqMlg9CkwtPylEypMaxMc70xOzV8VLJanYaeySo3uApxYm69DXS1ChfK7ZhfgVcbVmVHK2ybzWHrki59EmKbV0+BGdY2p7gOjn/jTr1a8bldyv30FoIpYOrH3MosJ8lzX4es8KSwG7AWZa0ZHAFZoQl2YkdliQeNcdV1/1LA1dgzOjEFkuavaPeakl2BneZJfUEJ8u20ZLn2SldcH0cmuR7nqXtCUzz+XnFqbrMnaTBR4ptmG8A03wMzlTFmYDvO5JzgBcVGxff8zFAyxzO1OUseS5wmmwb8zk+WypYTT+J7wDnWivIhjHSnBq0ciCA6yMtyqTJgix8GzjTWokbN0jDvDdUp5lvpT7ZrnenaJjlwu0FOdyryOL4JnB+zILbpM6Ku0fAfnmaC8cDyo9l4TxZ0GU5mkyLpWIOI+0JQpSdCbkxF250lAlxrEmnPoqrMlbghq8Cl8j20K6n5beDMRdjuu9PAr8kLGKTvO6TGkTXFDBTl4eJpU3e4xOTzC6QHDBROu5bJeEtlfyw0bJy41IZN53q1EiH1ZJPWqRZFVd6zJEU4QUuB5bneAJMg/2oiIMTYnpKwTb3btTMNOA/VZzROCRHzS4GPpTJJ82xDstCx2zF1vAz+TD1Fn2KUzV5GaSFNmr2D3CbZu9qO5QJoxwBWCVlSVpoo2YjXQf7PgRmnOOcuahRs30siSeB2eLoBGYtFLWnDqmvvMQwmU6I5ociRs1qvo6aBfhAcaqeYdSsTbGty9mWV6NmUdylOBUwadRssmITcEEz/Plj3Jn4LJnqCmO4bBNNP6D6RvINDyqOhblBRk3apVWxXtEJs70ZghKgS3EwDwsdNSsD9s/RCYxyc5GjZmXC2AwFZpRrZbylqfFYQkKO8mllFrhpcaD8kdZyZR5vQCY858cMOTnRLP/C4ESZCJ0YGsbuk7ZCl6VdoUKFChVKCOBffLwDkttLpiYAAAAASUVORK5CYII=");
+  text-decoration: none;
+  margin-right: 5px;
+  position: relative;
+
+  -webkit-transition: ease-in-out 0.2s;
+  -moz-transition: ease-in-out 0.2s;
+  -o-transition: ease-in-out 0.2s;
+  -ms-transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.2s;
+
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.shareWrapperElement.shareWithButtonTrigger .shareWrapperButtons {
+  position: absolute;
+  left: 3px;
+  opacity: 0;
+  display: table;
+  visibility: hidden;
+  white-space: nowrap;
+
+  -webkit-transition: ease-in-out 0.4s;
+  -moz-transition: ease-in-out 0.4s;
+  -o-transition: ease-in-out 0.4s;
+  -ms-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+.shareWrapperElement.shareWithButtonTrigger.shareWrapperOpen
+  .shareWrapperButtons {
+  opacity: 1;
+  left: 100%;
+  visibility: visible;
+}

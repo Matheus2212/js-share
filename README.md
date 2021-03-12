@@ -12,6 +12,10 @@ It also have a WhatsApp floating Widget
 
 ## How to use
 Just load the script and the css on your HTML page, and then use: 
+```html
+<div id="someElementId"></div>
+```
+
 ```javascript
 <script>
 Share.init({element:someElementId})

@@ -38,7 +38,7 @@ Share.init({element:shareWrapper,withText:false,withButton:true,shareButtonText:
 You can set the WhatsApp widget with a string number, or an array of numbers. You can also set a corner side with "left" or "right" (default is "right") Here's an example:
 ```javascript
 <script>
-Share.createFloatingWhatsAppWidget("{phone Number Goes Here | Or array number}");
+Share.createFloatingWhatsAppWidget("{phone Number Or array number goes here}","left");
 </script>
 ```
 

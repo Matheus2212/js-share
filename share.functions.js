@@ -1,6 +1,6 @@
 /**
  * Share script
- * 2021-03-12 -> Created script
+ * 2021-03-12 -> Created script.
  */
 var Share = {
   /** Wrapper element */
@@ -25,7 +25,7 @@ var Share = {
   init: function (object) {
     this.setURL(object.url);
     this.createWidget();
-    this.textInside = object.text;
+    this.textInside = object.withText;
     var keys = Object.keys(this.socialMedia);
     for (var i = 0; i < keys.length; i++) {
       if (typeof object[keys[i]] !== "undefined") {
@@ -114,6 +114,7 @@ var Share = {
       icon:
         "data:image/png;base64,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",
       link: "whatsapp://send?text={{url}}",
+      api: "https://api.whatsapp.com/send/?phone={{phone}}",
       eventLabel: "Shared on WhatsApp",
       backgroundColor: "#3ebd4e",
     },
@@ -234,5 +235,88 @@ var Share = {
     widget.classList.add("shareWrapperElement");
     widget.innerHTML = "<div class='shareWrapperButtons'></div>";
     this.widget = widget;
+  },
+
+  /** This function creates a whatsapp floating button at the corner of the screen */
+  createFloatingWhatsAppWidget: function (phones, side) {
+    var whatsappWrapper = document.createElement("div");
+    whatsappWrapper.classList.add("shareWhatsAppFloatingWidget");
+    if (typeof side == "undefined") {
+      side = "right";
+    }
+    if (side == "right") {
+      whatsappWrapper.classList.add(
+        "shareWhatsAppFloatingWidgetButtonRightSide"
+      );
+    } else {
+      whatsappWrapper.classList.add(
+        "shareWhatsAppFloatingWidgetButtonLeftSide"
+      );
+    }
+
+    var button = document.createElement("a");
+    button.classList.add("shareWhatsAppFloatingWidgetButton");
+    button.style.backgroundColor = this.socialMedia.whatsapp.backgroundColor;
+    button.style.backgroundImage =
+      "url('" + this.socialMedia.whatsapp.icon + "')";
+    whatsappWrapper.append(button);
+
+    var ul = document.createElement("ul");
+    ul.classList.add("shareWhatsAppFloatingWidgetPhoneList");
+    if (typeof phones == "string") {
+      phones = [phones];
+    }
+    for (var i = 0; i < phones.length; i++) {
+      var li = document.createElement("li");
+      li.innerHTML =
+        "<a target='_blank' href='" +
+        this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i]) +
+        "'>" +
+        phones[i] +
+        "</a>";
+      ul.append(li);
+    }
+    whatsappWrapper.append(ul);
+    document.getElementsByTagName("body")[0].append(whatsappWrapper);
+    document
+      .getElementsByTagName("html")[0]
+      .addEventListener("click", function () {
+        button.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
+      });
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      var classes = this.parentNode.classList,
+        open = false;
+      for (var i = 0; i < classes.length; i++) {
+        if (classes[i] == "shareWhatsAppFloatingWidgetOpen") {
+          open = true;
+        }
+      }
+      if (open) {
+        this.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
+        document
+          .getElementsByTagName("html")[0]
+          .classList.remove("whatsAppFloatingWidgetListOpen");
+      } else {
+        this.parentNode.classList.add("shareWhatsAppFloatingWidgetOpen");
+        document
+          .getElementsByTagName("html")[0]
+          .classList.add("whatsAppFloatingWidgetListOpen");
+      }
+    });
+
+    var phoneNumbers = ul.getElementsByTagName("a"),
+      widget = this;
+    for (var i = 0; i < phoneNumbers.length; i++) {
+      phoneNumbers[i].addEventListener("click", function (event) {
+        if (widget.onShare !== null) {
+          widget.onShare(widget.socialMedia.whatsapp.eventLabel);
+        }
+        document
+          .getElementsByTagName("html")[0]
+          .classList.remove("whatsAppFloatingWidgetListOpen");
+      });
+    }
   },
 };

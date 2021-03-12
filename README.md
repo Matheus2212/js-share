@@ -6,6 +6,10 @@ Simple JS script for sharing links. It will get the current URL or you can set i
 ## Overview
 This script was built to help to deterine where your users mostly share your content. You can pass a callback function to the script, and it will return a event label for you to send in your Google Analytics or Facebook Pixel or whatever you want. This can help you to see which social media your public likes the most.
 
+It also have a WhatsApp floating Widget
+
+---
+
 ## How to use
 Just load the script and the css on your HTML page, and then use: 
 ```javascript
@@ -30,3 +34,12 @@ Share.init({element:shareWrapper,withText:false,withButton:true,shareButtonText:
       }});
 </script>
 ```
+
+You can set the WhatsApp widget with a string number, or an array of numbers. You can also set a corner side with "left" or "right" (default is "right") Here's an example:
+```javascript
+<script>
+Share.createFloatingWhatsAppWidget("{phone Number Goes Here | Or array number}");
+</script>
+```
+
+Enjoy!

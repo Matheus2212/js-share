@@ -27,6 +27,6 @@ Here's an example:
 <script>
 Share.init({element:shareWrapper,withText:false,withButton:true,shareButtonText:'share',withWindow:true,url:'https://mycustomurl',onShare:function(label){
         console.log(label);
-      })};
+      }});
 </script>
 ```

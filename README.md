@@ -33,7 +33,7 @@ You can pass an object to set the wrapper element, set/unset which social media 
 Here's an example: 
 ```javascript
 <script>
-Share.init({element:shareWrapper,withText:false,withButton:true,shareButtonText:'share',withWindow:true,url:'https://mycustomurl',onShare:function(label){
+Share.init({element:shareWrapper,withText:false,withButton:true,shareButtonText:'share',withWindow:true,facebook:false,url:'https://mycustomurl',onShare:function(label){
         console.log(label);
       }});
 </script>

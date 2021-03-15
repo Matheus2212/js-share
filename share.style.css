@@ -280,6 +280,8 @@
   text-decoration: none;
   padding: 7px 15px;
   margin: 10px 0;
+  display: block;
+  padding-left: 25px;
 
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -301,62 +303,11 @@
   position: absolute;
   top: 50%;
   margin-top: -8px;
-}
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide
-  > ul
-  > li
-  > a::before {
   border-left: 8px solid #ffffff;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
   border-right: none;
   left: 10px;
-}
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonLeftSide
-  > ul
-  > li
-  > a::before {
-  border-right: 8px solid #ffffff;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: none;
-  right: 10px;
-}
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide
-  > ul
-  > li
-  > a,
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide
-  > ul
-  > li
-  > a:active,
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide
-  > ul
-  > li
-  > a:visited,
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide
-  > ul
-  > li
-  > a:link {
-  padding-left: 25px;
-}
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonLeftSide
-  > ul
-  > li
-  > a,
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonLeftSide
-  > ul
-  > li
-  > a:active,
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonLeftSide
-  > ul
-  > li
-  > a:visited,
-.shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonLeftSide
-  > ul
-  > li
-  > a:link {
-  padding-right: 25px;
 }
 .shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide > ul,
 .shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide
@@ -374,17 +325,17 @@
 html.whatsAppFloatingWidgetListOpen .shareWhatsAppFloatingWidgetButton::before {
   background-color: rgba(0, 0, 0, 0.5);
 
-  -webkit-animation: whatsAppShadowMovementBig 1s linear;
-  -moz-animation: whatsAppShadowMovementBig 1s linear;
-  -o-animation: whatsAppShadowMovementBig 1s linear;
-  -ms-animation: whatsAppShadowMovementBig 1s linear;
-  animation: whatsAppShadowMovementBig 1s linear;
+  -webkit-animation: whatsAppShadowMovementBig 0.5s linear;
+  -moz-animation: whatsAppShadowMovementBig 0.5s linear;
+  -o-animation: whatsAppShadowMovementBig 0.5s linear;
+  -ms-animation: whatsAppShadowMovementBig 0.5s linear;
+  animation: whatsAppShadowMovementBig 0.5s linear;
 
-  -webkit-transform: scale(1000);
-  -moz-transform: scale(1000);
-  -o-transform: scale(1000);
-  -ms-transform: scale(1000);
-  transform: scale(1000);
+  -webkit-transform: scale(250);
+  -moz-transform: scale(250);
+  -o-transform: scale(250);
+  -ms-transform: scale(250);
+  transform: scale(250);
 }
 @keyframes whatsAppShadowMovementBig {
   0% {
@@ -395,10 +346,42 @@ html.whatsAppFloatingWidgetListOpen .shareWhatsAppFloatingWidgetButton::before {
     transform: scale(1);
   }
   100% {
-    -webkit-transform: scale(500);
-    -moz-transform: scale(500);
-    -o-transform: scale(500);
-    -ms-transform: scale(500);
-    transform: scale(500);
+    -webkit-transform: scale(250);
+    -moz-transform: scale(250);
+    -o-transform: scale(250);
+    -ms-transform: scale(250);
+    transform: scale(250);
+  }
+}
+html.whatsAppFloatingWidgetListClosing
+  .shareWhatsAppFloatingWidgetButton::before {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  -webkit-animation: whatsAppShadowMovementSmall 0.5s linear;
+  -moz-animation: whatsAppShadowMovementSmall 0.5s linear;
+  -o-animation: whatsAppShadowMovementSmall 0.5s linear;
+  -ms-animation: whatsAppShadowMovementSmall 0.5s linear;
+  animation: whatsAppShadowMovementSmall 0.5s linear;
+
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+@keyframes whatsAppShadowMovementSmall {
+  0% {
+    -webkit-transform: scale(250);
+    -moz-transform: scale(250);
+    -o-transform: scale(250);
+    -ms-transform: scale(250);
+    transform: scale(250);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 }

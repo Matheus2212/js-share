@@ -295,9 +295,12 @@ var Share = {
       }
       if (open) {
         this.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
-        document
-          .getElementsByTagName("html")[0]
-          .classList.remove("whatsAppFloatingWidgetListOpen");
+        var html = document.getElementsByTagName("html")[0];
+        html.classList.remove("whatsAppFloatingWidgetListOpen");
+        html.classList.add("whatsAppFloatingWidgetListClosing");
+        setTimeout(function () {
+          html.classList.remove("whatsAppFloatingWidgetListClosing");
+        }, 500);
       } else {
         this.parentNode.classList.add("shareWhatsAppFloatingWidgetOpen");
         document

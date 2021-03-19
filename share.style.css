@@ -67,7 +67,11 @@
   border-radius: 20px;
 }
 .shareWrapperElement .shareWrapperButtons .shareButton:hover {
-  opacity: 0.7;
+  -webkit-filter: grayscale(50%);
+  -moz-filter: grayscale(50%);
+  -o-filter: grayscale(50%);
+  -ms-filter: grayscale(50%);
+  filter: grayscale(50%);
 }
 .shareWrapperElement.shareButtonNoText .shareWrapperButtons .shareButton,
 .shareWrapperElement.shareButtonNoText .shareWrapperButtons .shareButton:active,
@@ -138,7 +142,7 @@
 
 .shareWhatsAppFloatingWidget {
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
   z-index: 1;
 }
 .shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetButtonRightSide {
@@ -153,8 +157,8 @@
 .shareWhatsAppFloatingWidget > .shareWhatsAppFloatingWidgetButton:visited {
   position: relative;
   display: inline-block;
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   background-size: 70%;
   cursor: pointer;
   background-position: 50% 50%;
@@ -206,11 +210,11 @@
   -ms-transform: scale(1);
   transform: scale(1);
 
-  -webkit-animation: whatsAppShadowMovement 1s linear infinite;
-  -moz-animation: whatsAppShadowMovement 1s linear infinite;
-  -o-animation: whatsAppShadowMovement 1s linear infinite;
-  -ms-animation: whatsAppShadowMovement 1s linear infinite;
-  animation: whatsAppShadowMovement 1s linear infinite;
+  -webkit-animation: whatsAppShadowMovement 2s linear infinite;
+  -moz-animation: whatsAppShadowMovement 2s linear infinite;
+  -o-animation: whatsAppShadowMovement 2s linear infinite;
+  -ms-animation: whatsAppShadowMovement 2s linear infinite;
+  animation: whatsAppShadowMovement 2s linear infinite;
 }
 @keyframes whatsAppMovement {
   0% {
@@ -236,11 +240,11 @@
   100% {
     opacity: 0;
 
-    -webkit-transform: scale(4);
-    -moz-transform: scale(4);
-    -o-transform: scale(4);
-    -ms-transform: scale(4);
-    transform: scale(4);
+    -webkit-transform: scale(5);
+    -moz-transform: scale(5);
+    -o-transform: scale(5);
+    -ms-transform: scale(5);
+    transform: scale(5);
   }
 }
 .shareWhatsAppFloatingWidget > ul {
@@ -262,12 +266,12 @@
 .shareWhatsAppFloatingWidget.shareWhatsAppFloatingWidgetOpen > ul {
   opacity: 1;
   visibility: visible;
-  bottom: 45px;
+  bottom: 70px;
 }
 .shareWhatsAppFloatingWidget > ul > li {
   display: block;
   position: relative;
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 0;
 }
 .shareWhatsAppFloatingWidget > ul > li > a,
@@ -325,11 +329,11 @@
 html.whatsAppFloatingWidgetListOpen .shareWhatsAppFloatingWidgetButton::before {
   background-color: rgba(0, 0, 0, 0.5);
 
-  -webkit-animation: whatsAppShadowMovementBig 0.5s linear;
-  -moz-animation: whatsAppShadowMovementBig 0.5s linear;
-  -o-animation: whatsAppShadowMovementBig 0.5s linear;
-  -ms-animation: whatsAppShadowMovementBig 0.5s linear;
-  animation: whatsAppShadowMovementBig 0.5s linear;
+  -webkit-animation: whatsAppShadowMovementBig 0.3s linear;
+  -moz-animation: whatsAppShadowMovementBig 0.3s linear;
+  -o-animation: whatsAppShadowMovementBig 0.3s linear;
+  -ms-animation: whatsAppShadowMovementBig 0.3s linear;
+  animation: whatsAppShadowMovementBig 0.3s linear;
 
   -webkit-transform: scale(250);
   -moz-transform: scale(250);
@@ -357,11 +361,11 @@ html.whatsAppFloatingWidgetListClosing
   .shareWhatsAppFloatingWidgetButton::before {
   background-color: rgba(0, 0, 0, 0.5);
 
-  -webkit-animation: whatsAppShadowMovementSmall 0.5s linear;
-  -moz-animation: whatsAppShadowMovementSmall 0.5s linear;
-  -o-animation: whatsAppShadowMovementSmall 0.5s linear;
-  -ms-animation: whatsAppShadowMovementSmall 0.5s linear;
-  animation: whatsAppShadowMovementSmall 0.5s linear;
+  -webkit-animation: whatsAppShadowMovementSmall 0.3s linear;
+  -moz-animation: whatsAppShadowMovementSmall 0.3s linear;
+  -o-animation: whatsAppShadowMovementSmall 0.3s linear;
+  -ms-animation: whatsAppShadowMovementSmall 0.3s linear;
+  animation: whatsAppShadowMovementSmall 0.3s linear;
 
   -webkit-transform: scale(1);
   -moz-transform: scale(1);

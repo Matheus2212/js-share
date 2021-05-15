@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Sharer</title>
+    <link rel="stylesheet" href="share.style.css" />
+    <style>
+            *{
+                    box-sizing: border-box;
+            }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="shareWrapper"></div>
+    <script src="share.functions.js"></script>
+    <script>
+      Share.init({
+        element: shareWrapper,
+        withText: false,
+        withButton: true,
+        shareButtonText: "compartilhar",
+        withWindow: true,
+        facebook: false,
+        url: "https://mycustom.url",
+        onShare: function (label) {
+          console.log(label);
+        },
+      });
+      Share.createFloatingWhatsAppWidget(
+        ["49 98422-9852", "49 3011-1011"],
+        "left"
+      );
+    </script>
+  </body>
+</html>

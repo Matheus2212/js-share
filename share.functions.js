@@ -3,6 +3,7 @@
  * 2021-03-12 -> Created script.
  * 2021-03-12 -> Created WhatsApp Floating Widget
  * 2021-03-15 -> Changed WhatsApp to use a alpha background - Credits for Ismael Schmidt
+ * 2021-06-03 -> Improved Browser compatibility list
  */
 
 var Share = {
@@ -46,7 +47,7 @@ var Share = {
       this.withButton = object.withButton;
       this.createTriggerButton(object.shareButtonText);
     }
-    object.element.append(this.widget);
+    object.element.appendChild(this.widget);
   },
 
   /** Will define which URL will shared */
@@ -65,7 +66,7 @@ var Share = {
     if (typeof text !== "undefined") {
       a.innerText = text;
     }
-    this.widget.append(a);
+    this.widget.appendChild(a);
     this.widget.classList.add("shareWithButtonTrigger");
     document
       .getElementsByTagName("html")[0]
@@ -168,7 +169,7 @@ var Share = {
         button.target = "_blank";
         this.widget
           .getElementsByClassName("shareWrapperButtons")[0]
-          .append(button);
+          .appendChild(button);
       }
     }
     if (!this.textInside) {
@@ -263,7 +264,7 @@ var Share = {
     button.style.backgroundColor = this.socialMedia.whatsapp.backgroundColor;
     button.style.backgroundImage =
       "url('" + this.socialMedia.whatsapp.icon + "')";
-    whatsappWrapper.append(button);
+    whatsappWrapper.appendChild(button);
 
     /** This will create the phone list */
     var ul = document.createElement("ul");
@@ -279,12 +280,12 @@ var Share = {
         "'>" +
         phones[i] +
         "</a>";
-      ul.append(li);
+      ul.appendChild(li);
     }
-    whatsappWrapper.append(ul);
+    whatsappWrapper.appendChild(ul);
 
     /** This will bind the click to close the floating widget */
-    document.getElementsByTagName("body")[0].append(whatsappWrapper);
+    document.getElementsByTagName("body")[0].appendChild(whatsappWrapper);
     document
       .getElementsByTagName("html")[0]
       .addEventListener("click", function () {

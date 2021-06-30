@@ -202,13 +202,13 @@ var Share = {
                 url,
                 title,
                 "scrollbars=no,width=" +
-                  bWidth +
-                  ", height=" +
-                  bHeight +
-                  ", top=" +
-                  sHeight +
-                  ", left=" +
-                  sWidth
+                bWidth +
+                ", height=" +
+                bHeight +
+                ", top=" +
+                sHeight +
+                ", left=" +
+                sWidth
               );
               if (widget.onShare !== null) {
                 widget.onShare(title);
@@ -276,7 +276,7 @@ var Share = {
       var li = document.createElement("li");
       li.innerHTML =
         "<a target='_blank' href='" +
-        this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i]) +
+        this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i].replace(/[^\+0-9]/g, "")) +
         "'>" +
         phones[i] +
         "</a>";

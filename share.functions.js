@@ -281,7 +281,7 @@ var Share = {
         var li = document.createElement("li");
         li.innerHTML =
           "<a target='_blank' href='" +
-          this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i].replace(/[^0-9]/, "").replace("-", "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : "") +
+          this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i].replace(/[^0-9]/g, "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : "") +
           "'>" +
           phones[i] +
           "</a>";
@@ -289,7 +289,7 @@ var Share = {
       }
       whatsappWrapper.appendChild(ul);
     } else {
-      button.setAttribute("href", this.socialMedia.whatsapp.api.replace("{{phone}}", phones.replace(/[^0-9]/, "").replace("-", "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : ""));
+      button.setAttribute("href", this.socialMedia.whatsapp.api.replace("{{phone}}", phones.replace(/[^0-9]/g, "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : ""));
       button.setAttribute("target", "_blank");
     }
 

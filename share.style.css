@@ -47,7 +47,6 @@
   position: relative;
   min-height: 20px;
   line-height: 20px;
-  
 
   -webkit-transition: ease-in-out 0.2s;
   -moz-transition: ease-in-out 0.2s;
@@ -94,7 +93,7 @@
   position: relative;
   min-height: 20px;
   line-height: 17px;
-  border:1px solid #DDDDDD;
+  border: 1px solid #dddddd;
 
   -webkit-transition: ease-in-out 0.2s;
   -moz-transition: ease-in-out 0.2s;
@@ -280,7 +279,7 @@
   background-color: #0fcc85;
   color: #ffffff;
   text-decoration: none;
-  padding: 7px 15px;  
+  padding: 7px 15px;
   display: block;
   padding-left: 25px;
   white-space: nowrap;
@@ -386,4 +385,56 @@ html.whatsAppFloatingWidgetListClosing
     -ms-transform: scale(1);
     transform: scale(1);
   }
+}
+.shareWhatsAppHover.shareWhatsAppFloatingWidgetButton::after {
+  content: attr(data-content);
+  font-family: inherit;
+  padding: 10px;
+  position: absolute;
+  background-color: #ffffff;
+  color: #000000;
+  width: 200px;
+  margin-top: 11px;
+  opacity: 0;
+  z-index: -1;
+
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  -ms-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+
+  -webkit-transition: ease-in-out 0.3s;
+  -moz-transition: ease-in-out 0.3s;
+  -o-transition: ease-in-out 0.3s;
+  -ms-transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.3s;
+}
+.shareWhatsAppFloatingWidgetButtonRightSide
+  .shareWhatsAppHover.shareWhatsAppFloatingWidgetButton::after {
+  right: -100%;
+  margin-right: 10px;
+}
+.shareWhatsAppFloatingWidgetButtonRightSide:hover
+  .shareWhatsAppHover.shareWhatsAppFloatingWidgetButton::after {
+  opacity: 1;
+  right: 100%;
+  z-index: 0;
+}
+.shareWhatsAppFloatingWidgetButtonLeftSide
+  .shareWhatsAppHover.shareWhatsAppFloatingWidgetButton::after {
+  left: -100%;
+  margin-left: 10px;
+}
+.shareWhatsAppFloatingWidgetButtonLeftSide
+  .shareWhatsAppHover.shareWhatsAppFloatingWidgetButton:hover::after {
+  opacity: 1;
+  left: 100%;
+  z-index: 0;
 }

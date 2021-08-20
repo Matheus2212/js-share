@@ -202,13 +202,13 @@ var Share = {
                 url,
                 title,
                 "scrollbars=no,width=" +
-                  bWidth +
-                  ", height=" +
-                  bHeight +
-                  ", top=" +
-                  sHeight +
-                  ", left=" +
-                  sWidth
+                bWidth +
+                ", height=" +
+                bHeight +
+                ", top=" +
+                sHeight +
+                ", left=" +
+                sWidth
               );
               if (widget.onShare !== null) {
                 widget.onShare(title);
@@ -242,7 +242,7 @@ var Share = {
   },
 
   /** This function creates a whatsapp floating button at the corner of the screen */
-  createFloatingWhatsAppWidget: function (phones, side) {
+  createFloatingWhatsAppWidget: function (phones, side, hoverMessage, whatsappTextPlaceholder) {
     var whatsappWrapper = document.createElement("div");
     whatsappWrapper.classList.add("shareWhatsAppFloatingWidget");
     if (typeof side == "undefined") {
@@ -264,25 +264,35 @@ var Share = {
     button.style.backgroundColor = this.socialMedia.whatsapp.backgroundColor;
     button.style.backgroundImage =
       "url('" + this.socialMedia.whatsapp.icon + "')";
+    if (typeof hoverMessage !== "undefined" && typeof hoverMessage == "string") {
+      button.setAttribute('data-content', hoverMessage);
+      button.classList.add("shareWhatsAppHover");
+    }
     whatsappWrapper.appendChild(button);
 
     /** This will create the phone list */
-    var ul = document.createElement("ul");
-    ul.classList.add("shareWhatsAppFloatingWidgetPhoneList");
-    if (typeof phones == "string") {
-      phones = [phones];
+    if (typeof phones !== "string" && typeof phones == "object" && phones.length > 1) {
+      var ul = document.createElement("ul");
+      ul.classList.add("shareWhatsAppFloatingWidgetPhoneList");
+      if (typeof phones == "string") {
+        phones = [phones];
+      }
+      for (var i = 0; i < phones.length; i++) {
+        var li = document.createElement("li");
+        li.innerHTML =
+          "<a target='_blank' href='" +
+          this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i].replace(/[^0-9]/, "").replace("-", "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : "") +
+          "'>" +
+          phones[i] +
+          "</a>";
+        ul.appendChild(li);
+      }
+      whatsappWrapper.appendChild(ul);
+    } else {
+      button.setAttribute("href", this.socialMedia.whatsapp.api.replace("{{phone}}", phones.replace(/[^0-9]/, "").replace("-", "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : ""));
+      button.setAttribute("target", "_blank");
     }
-    for (var i = 0; i < phones.length; i++) {
-      var li = document.createElement("li");
-      li.innerHTML =
-        "<a target='_blank' href='" +
-        this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i]) +
-        "'>" +
-        phones[i] +
-        "</a>";
-      ul.appendChild(li);
-    }
-    whatsappWrapper.appendChild(ul);
+
 
     /** This will bind the click to close the floating widget */
     document.getElementsByTagName("body")[0].appendChild(whatsappWrapper);
@@ -293,44 +303,46 @@ var Share = {
       });
 
     /** This will bind the click to open/close the floating widget */
-    button.addEventListener("click", function (event) {
-      event.stopPropagation();
-      event.preventDefault();
-      var classes = this.parentNode.classList,
-        open = false;
-      for (var i = 0; i < classes.length; i++) {
-        if (classes[i] == "shareWhatsAppFloatingWidgetOpen") {
-          open = true;
+    if (typeof phones !== "string" && typeof phones == "object" && phones.length > 1) {
+      button.addEventListener("click", function (event) {
+        event.stopPropagation();
+        event.preventDefault();
+        var classes = this.parentNode.classList,
+          open = false;
+        for (var i = 0; i < classes.length; i++) {
+          if (classes[i] == "shareWhatsAppFloatingWidgetOpen") {
+            open = true;
+          }
         }
-      }
-      if (open) {
-        this.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
-        var html = document.getElementsByTagName("html")[0];
-        html.classList.remove("whatsAppFloatingWidgetListOpen");
-        html.classList.add("whatsAppFloatingWidgetListClosing");
-        setTimeout(function () {
-          html.classList.remove("whatsAppFloatingWidgetListClosing");
-        }, 500);
-      } else {
-        this.parentNode.classList.add("shareWhatsAppFloatingWidgetOpen");
-        document
-          .getElementsByTagName("html")[0]
-          .classList.add("whatsAppFloatingWidgetListOpen");
-      }
-    });
-
-    /* This will bind the action to the phone list itens */
-    var phoneNumbers = ul.getElementsByTagName("a"),
-      widget = this;
-    for (var i = 0; i < phoneNumbers.length; i++) {
-      phoneNumbers[i].addEventListener("click", function (event) {
-        if (widget.onShare !== null) {
-          widget.onShare(widget.socialMedia.whatsapp.eventLabel);
+        if (open) {
+          this.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
+          var html = document.getElementsByTagName("html")[0];
+          html.classList.remove("whatsAppFloatingWidgetListOpen");
+          html.classList.add("whatsAppFloatingWidgetListClosing");
+          setTimeout(function () {
+            html.classList.remove("whatsAppFloatingWidgetListClosing");
+          }, 500);
+        } else {
+          this.parentNode.classList.add("shareWhatsAppFloatingWidgetOpen");
+          document
+            .getElementsByTagName("html")[0]
+            .classList.add("whatsAppFloatingWidgetListOpen");
         }
-        document
-          .getElementsByTagName("html")[0]
-          .classList.remove("whatsAppFloatingWidgetListOpen");
       });
+
+      /* This will bind the action to the phone list itens */
+      var phoneNumbers = ul.getElementsByTagName("a"),
+        widget = this;
+      for (var i = 0; i < phoneNumbers.length; i++) {
+        phoneNumbers[i].addEventListener("click", function (event) {
+          if (widget.onShare !== null) {
+            widget.onShare(widget.socialMedia.whatsapp.eventLabel);
+          }
+          document
+            .getElementsByTagName("html")[0]
+            .classList.remove("whatsAppFloatingWidgetListOpen");
+        });
+      }
     }
   },
 };

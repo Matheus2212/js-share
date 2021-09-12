@@ -281,15 +281,16 @@ var Share = {
         var li = document.createElement("li");
         li.innerHTML =
           "<a target='_blank' href='" +
-          this.socialMedia.whatsapp.api.replace("{{phone}}", phones[i].replace(/[^0-9]/g, "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : "") +
+          this.socialMedia.whatsapp.api.replace("{{phone}}", (typeof phones[i] == "object" ? phones[i][1].replace(/[^0-9]/g, "") : phones[i].replace(/[^0-9]/g, ""))) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : "") +
           "'>" +
-          phones[i] +
+          (typeof phones[i] == "object" ? phones[i][0] : phones[i]) +
           "</a>";
         ul.appendChild(li);
       }
       whatsappWrapper.appendChild(ul);
     } else {
-      button.setAttribute("href", this.socialMedia.whatsapp.api.replace("{{phone}}", phones.replace(/[^0-9]/g, "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : ""));
+      console.log(phones);
+      button.setAttribute("href", this.socialMedia.whatsapp.api.replace("{{phone}}", (typeof phones == "object") ? phones[0][1].replace(/[^0-9]/g, "") : phones.replace(/[^0-9]/g, "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : ""));
       button.setAttribute("target", "_blank");
     }
 
@@ -344,5 +345,5 @@ var Share = {
         });
       }
     }
-  },
+  }
 };

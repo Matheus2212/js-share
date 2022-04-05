@@ -4,6 +4,7 @@
  * 2021-03-12 -> Created WhatsApp Floating Widget
  * 2021-03-15 -> Changed WhatsApp to use a alpha background - Credits for Ismael Schmidt
  * 2021-06-03 -> Improved Browser compatibility list
+ * 2022-04-05 -> refactor: Changed simple operation
  */
 
 var Share = {
@@ -83,11 +84,8 @@ var Share = {
             open = true;
           }
         }
-        if (open) {
-          this.parentNode.classList.remove("shareWrapperOpen");
-        } else {
-          this.parentNode.classList.add("shareWrapperOpen");
-        }
+        open = (open ? "remove" : "add")
+        this.parentNode.classList[open]("shareWrapperOpen");
       });
     }, 100);
   },
@@ -248,15 +246,10 @@ var Share = {
     if (typeof side == "undefined") {
       side = "right";
     }
-    if (side == "right") {
-      whatsappWrapper.classList.add(
-        "shareWhatsAppFloatingWidgetButtonRightSide"
-      );
-    } else {
-      whatsappWrapper.classList.add(
-        "shareWhatsAppFloatingWidgetButtonLeftSide"
-      );
-    }
+    side = side.charAt(0).toUpperCase() + side.slice(1);
+    whatsappWrapper.classList.add(
+      "shareWhatsAppFloatingWidgetButton" + side + "Side"
+    );
 
     /** This is the floating icon button */
     var button = document.createElement("a");

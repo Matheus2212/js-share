@@ -192,14 +192,14 @@ var Share = {
               event.stopPropagation();
               var bWidth = 600,
                 bHeight = 400,
-                sWidth = window.screen.width / 2 - bWidth / 2,
-                sHeight = window.screen.height / 2 - bHeight / 2,
+                sWidth = (window.innerWidth / 2) - (bWidth / 2),
+                sHeight = (window.innerHeight / 2) - (bHeight / 2),
                 url = this.href,
                 title = this.getAttribute("data-label");
               window.open(
                 url,
                 title,
-                "scrollbars=no,width=" +
+                "location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no,width=" +
                 bWidth +
                 ", height=" +
                 bHeight +

@@ -5,6 +5,8 @@
  * 2021-03-15 -> Changed WhatsApp to use a alpha background - Credits for Ismael Schmidt
  * 2021-06-03 -> Improved Browser compatibility list
  * 2022-04-05 -> refactor: Changed simple operation
+ * 2022-06-07 -> refactor: Improved a bit the performance of the script
+ * 2022-06-07 -> feature: Added navigator.share and navigator.canShare functions for mobile
  */
 
 var Share = {
@@ -64,27 +66,17 @@ var Share = {
     var a = document.createElement("a");
     a.href = "javascript:void(0)";
     a.classList.add("shareButtonTrigger");
-    if (typeof text !== "undefined") {
-      a.innerText = text;
-    }
+    a.innerText = (typeof text !== "undefined" ? text : "");
     this.widget.appendChild(a);
     this.widget.classList.add("shareWithButtonTrigger");
-    document
-      .getElementsByTagName("html")[0]
-      .addEventListener("click", function () {
-        a.parentNode.classList.remove("shareWrapperOpen");
-      });
+    document.body.addEventListener("click", function () {
+      a.parentNode.classList.remove("shareWrapperOpen");
+    });
     setTimeout(function () {
       a.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
-        var open = false;
-        for (var i = 0; i < this.parentNode.classList.length; i++) {
-          if (this.parentNode.classList[i] == "shareWrapperOpen") {
-            open = true;
-          }
-        }
-        open = (open ? "remove" : "add")
+        var open = (this.parentNode.classList.contains("shareWrapperOpen") ? "remove" : "add");
         this.parentNode.classList[open]("shareWrapperOpen");
       });
     }, 100);
@@ -217,8 +209,7 @@ var Share = {
       }, 100);
     } else {
       if (this.onShare !== null) {
-        var widget = this;
-        var links = widget.widget.getElementsByTagName("a");
+        var links = this.widget.getElementsByTagName("a");
         for (var i = 0; i < links.length; i++) {
           links[i].addEventListener("click", function (event) {
             var label = this.getAttribute("data-label");
@@ -282,35 +273,26 @@ var Share = {
       }
       whatsappWrapper.appendChild(ul);
     } else {
-      console.log(phones);
       button.setAttribute("href", this.socialMedia.whatsapp.api.replace("{{phone}}", (typeof phones == "object") ? phones[0][1].replace(/[^0-9]/g, "") : phones.replace(/[^0-9]/g, "")) + (typeof whatsappTextPlaceholder !== "undefined" && typeof whatsappTextPlaceholder === "string" ? "&text=" + whatsappTextPlaceholder : ""));
       button.setAttribute("target", "_blank");
     }
 
 
     /** This will bind the click to close the floating widget */
-    document.getElementsByTagName("body")[0].appendChild(whatsappWrapper);
-    document
-      .getElementsByTagName("html")[0]
-      .addEventListener("click", function () {
-        button.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
-      });
+    document.body.appendChild(whatsappWrapper);
+    document.body.addEventListener("click", function () {
+      button.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
+    });
 
     /** This will bind the click to open/close the floating widget */
     if (typeof phones !== "string" && typeof phones == "object" && phones.length > 1) {
       button.addEventListener("click", function (event) {
         event.stopPropagation();
         event.preventDefault();
-        var classes = this.parentNode.classList,
-          open = false;
-        for (var i = 0; i < classes.length; i++) {
-          if (classes[i] == "shareWhatsAppFloatingWidgetOpen") {
-            open = true;
-          }
-        }
+        var open = this.parentNode.classList.contains("shareWhatsAppFloatingWidgetOpen");
         if (open) {
           this.parentNode.classList.remove("shareWhatsAppFloatingWidgetOpen");
-          var html = document.getElementsByTagName("html")[0];
+          var html = document.body;
           html.classList.remove("whatsAppFloatingWidgetListOpen");
           html.classList.add("whatsAppFloatingWidgetListClosing");
           setTimeout(function () {
@@ -318,9 +300,7 @@ var Share = {
           }, 500);
         } else {
           this.parentNode.classList.add("shareWhatsAppFloatingWidgetOpen");
-          document
-            .getElementsByTagName("html")[0]
-            .classList.add("whatsAppFloatingWidgetListOpen");
+          document.body.classList.add("whatsAppFloatingWidgetListOpen");
         }
       });
 
@@ -337,6 +317,48 @@ var Share = {
             .classList.remove("whatsAppFloatingWidgetListOpen");
         });
       }
+    }
+  },
+
+  /* This will create the button to share url or files*/
+  createSharer(parent, callback) {
+    var button = document.createElement("a");
+    button.classList.add("sharer");
+    parent.appendChild(button);
+    setTimeout(function () {
+      button.addEventListener("click", callback);
+    }, 100);
+  },
+
+  /* This will Share the url on mobile */
+  link: function (title, url, text) {
+    if (typeof navigator.share == "undefined") {
+      console.log("Can't share");
+      return false;
+    }
+    title = (title !== "" ? title : document.title), url = (url !== "" ? url : window.location.href), text = (text !== "" ? text : "I want to share it with you!");
+    navigator.share({
+      title: title,
+      text: text,
+      url: url,
+    })
+      .then(() => console.log('Successful share'))
+      .catch((error) => console.log('Error sharing', error));
+  },
+
+  /* This will Share the file on mobile */
+  file: function (title, files, text) {
+    if (navigator.canShare && navigator.canShare({ files: files })) {
+      title = (title !== "" ? title : document.title), text = (text !== "" ? text : "I want to share it with you!");
+      navigator.share({
+        files: files,
+        title: title,
+        text: text,
+      })
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed', error));
+    } else {
+      return false;
     }
   }
 };

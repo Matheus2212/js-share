@@ -40,10 +40,14 @@
     });
 
     Share.createFloatingWhatsAppWidget(
-      ["+55 (49) 98422-9852", ["Ventas", "(99) 9999-9999"], ["Soporte", "(19) 59200-9999"]],
-      "left",
-      "How can I help you?",
-      "Hello There!"
+      [
+        "(99) 9999-9999",
+        ["Ventas", "(99) 9999-9999"], 
+        ["Soporte", "(19) 59200-9999"],
+      ],
+      "right",
+      null,
+      "Hello There!",
     );
 
     Share.createSharer(document.querySelector("#test"), function () { Share.link() });

@@ -317,7 +317,7 @@ var Share = {
       whatsappWrapper.classList.add("WhatsappWithForm");
       ul.classList.add("whatsappWidgetForm");
       var autoOpen = function () {
-        setTimeout(function () {
+        window["whatsTimeout"] = setTimeout(function () {
           document
             .getElementById("shareWhatsAppFloatingWidgetButton")
             .dispatchEvent(new Event("click"));
@@ -342,6 +342,7 @@ var Share = {
       button.addEventListener("click", function (event) {
         event.stopPropagation();
         event.preventDefault();
+        clearTimeout(window["whatsTimeout"]);
         var open = this.parentNode.classList.contains(
           "shareWhatsAppFloatingWidgetOpen"
         );
